@@ -1,0 +1,30 @@
+{
+    "data":[
+        {
+            "word":"blah",
+            "id":1,
+            "definition":"Blah blah",
+            "liked":false,
+            "links":[
+                {"id":1,
+                "link":"www.blah.com"},
+                {"id":2,
+                "link":"www.wikipedia.com/blah"
+                }
+            ]
+        },
+        {
+            "word":"huzzah",
+            "id": 2,
+            "definition":"Celebration",
+            "liked":false,
+            "links":[
+                {"id":3,
+                "link":"www.huzzah.com"},
+                {"id":4,
+                "link":"www.wikipedia.com/huzzah"
+                }
+            ]
+        }
+    ]
+}

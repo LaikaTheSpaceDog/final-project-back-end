@@ -1,0 +1,15 @@
+{
+    "data":{
+            "id":1,
+            "word":"API",
+            "definition":"An application programming interface (API) sends data back and forth between a website or app and a user. For example, they can be used to process orders and confirm payments if you are selling something online. APIs can also be offered as products to developers to help them build a site using the data available on the API.",
+            "liked":false,
+            "links":[
+                {"id":1,
+                "link":"https://apimetrics.io/api-knowledge-base/apis-for-dummies/"},
+                {"id":2,
+                "link":"https://www.freecodecamp.org/news/what-is-an-api-in-english-please-b880a3214a82/"
+                }
+            ]
+        }
+}

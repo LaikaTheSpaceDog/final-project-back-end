@@ -1,0 +1,19 @@
+{
+    "data":[
+        {
+            "id":1,
+            "word":"API",
+            "liked":false
+        },
+        {
+            "id":2,
+            "word":"Front end",
+            "liked":false
+        },
+        {
+            "id":3,
+            "word":"Back end",
+            "liked":false
+        }
+    ]
+}

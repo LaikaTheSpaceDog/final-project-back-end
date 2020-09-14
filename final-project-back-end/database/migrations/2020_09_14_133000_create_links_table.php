@@ -18,7 +18,7 @@ class CreateLinksTable extends Migration
             $table->string("link", 300);
             $table->timestamps();
 
-            $table->foreignID("word_id")->unsigned();
+            $table->foreignId("word_id")->unsigned();
             $table->foreign("word_id")->references("id")->on("words")->onDelete("cascade");
         });
     }

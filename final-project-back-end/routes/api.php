@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\Articles;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::group(["prefix" => "words"], function () {
+    Route::get("", [Words::class, "index"]);
+    Route::post("", [Words::class, "store"]);
+    Route::group(["prefix" => "{word}"], function () {
+        Route::get("", [Words::class, "show"]);
+        Route::patch("", [Words::class, "like"]);
+    });
 });

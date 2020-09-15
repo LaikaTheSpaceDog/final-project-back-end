@@ -27,14 +27,4 @@ class Link extends Model
         }
     }
 
-    public static function wordLinks(Collection $links)
-    {
-        foreach($links as $link){
-            return [
-                "id" => $link->id,
-                "link" => $link->link
-            ];
-        }
-    }
-
 }

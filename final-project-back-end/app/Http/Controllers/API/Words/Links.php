@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Link;
 use App\Word;
 use App\Http\Resources\API\LinkResource;
+use App\Http\Resources\API\WordLinkResource;
 
 class Links extends Controller
 {
@@ -17,9 +18,7 @@ class Links extends Controller
      */
     public function index(Word $word)
     {
-        foreach($word->links as $link) {
-            return new LinkResource($link);
-        };
+        return WordLinkResource::collection($word->links);
     }
 
     /**

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\Words;
+use App\Http\Controllers\API\Words\Links;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +27,8 @@ Route::group(["prefix" => "words"], function () {
     Route::group(["prefix" => "{word}"], function () {
         Route::get("", [Words::class, "show"]);
         Route::patch("", [Words::class, "update"]);
+        Route::group(["prefix" => "liked"], function () {
+            Route::get("", [Links::class, "index"]);
+        });
     });
 });

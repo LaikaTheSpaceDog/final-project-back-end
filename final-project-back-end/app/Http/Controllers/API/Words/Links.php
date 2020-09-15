@@ -1,23 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Words;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Link;
 use App\Word;
-use App\Http\Requests\API\WordRequest;
-use App\Http\Requests\API\WordUpdateRequest;
 
-class Words extends Controller
+class Links extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Word $word)
     {
-        return Word::all();
+        return $word->links;
     }
 
     /**
@@ -26,10 +25,9 @@ class Words extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(WordRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->all();
-        return Word::create($data);
+        //
     }
 
     /**
@@ -38,9 +36,9 @@ class Words extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Word $word)
+    public function show($id)
     {
-        return $word;
+        //
     }
 
     /**
@@ -50,11 +48,9 @@ class Words extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(WordUpdateRequest $request, Word $word)
+    public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $word->fill($data)->save();
-        return $word;
+        //
     }
 
     /**
@@ -63,14 +59,8 @@ class Words extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Word $word)
+    public function destroy($id)
     {
-        $word->delete();
-    }
-
-    public function like()
-    {
-        $words = Word::all();
-        return $liked = $words->filter(fn($obj) => $obj->liked === 1);
+        //
     }
 }

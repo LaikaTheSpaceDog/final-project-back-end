@@ -8,6 +8,7 @@ use App\Word;
 use App\Http\Requests\API\WordRequest;
 use App\Http\Requests\API\WordUpdateRequest;
 use App\Http\Resources\API\WordResource;
+use App\Http\Resources\API\WordListResource;
 
 class Words extends Controller
 {
@@ -18,7 +19,7 @@ class Words extends Controller
      */
     public function index()
     {
-        return Word::all();
+        return WordListResource::collection(Word::all());
     }
 
     /**
@@ -30,7 +31,8 @@ class Words extends Controller
     public function store(WordRequest $request)
     {
         $data = $request->all();
-        $word = Word::create($data);
+        $newWord = Word::create($data);
+        $word = Word::where("id", $newWord["id"])->first();
         return new WordResource($word);
     }
 

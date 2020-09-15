@@ -24,8 +24,10 @@ class WordRequest extends FormRequest
     public function rules()
     {
         return [
-            "word" => ["required", "string", "max:100"],
-            "definition" => ["required", "string", "max:1000"]
+            "word" => ["required", "string", "max:100", "unique:words"],
+            "definition" => ["required", "string", "max:1000"],
+            "liked" => ["boolean"],
+            "links" => ["array"]
         ];
     }
 }

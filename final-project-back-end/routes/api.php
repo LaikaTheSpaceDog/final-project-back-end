@@ -28,8 +28,9 @@ Route::group(["prefix" => "words"], function () {
         Route::get("", [Words::class, "show"]);
         Route::patch("", [Words::class, "update"]);
         Route::put("", [Words::class, "update"]);
-        Route::group(["prefix" => "liked"], function () {
+        Route::group(["prefix" => "links"], function () {
             Route::get("", [Links::class, "index"]);
+            Route::post("", [Links::class, "store"]);
         });
     });
 });

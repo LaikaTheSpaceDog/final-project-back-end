@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Word;
+use App\Link;
 use App\Http\Requests\API\WordRequest;
 use App\Http\Requests\API\WordUpdateRequest;
 use App\Http\Resources\API\WordResource;
@@ -34,6 +35,7 @@ class Words extends Controller
         $data = $request->all();
         $newWord = Word::create($data);
         $word = Word::where("id", $newWord["id"])->first();
+        Link::createMultiple($data["links"], $word);
         return new WordResource($word);
     }
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Link;
 use App\Word;
+use App\Http\Resources\API\LinkResource;
 
 class Links extends Controller
 {
@@ -16,7 +17,9 @@ class Links extends Controller
      */
     public function index(Word $word)
     {
-        return $word->links;
+        foreach($word->links as $link) {
+            return new LinkResource($link);
+        };
     }
 
     /**
@@ -25,9 +28,12 @@ class Links extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Word $word)
     {
-        //
+        
+        $link = new Link($request->all());
+        $word->links()->save($link);
+        return new LinkResource($link);
     }
 
     /**

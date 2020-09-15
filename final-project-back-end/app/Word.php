@@ -16,4 +16,5 @@ class Word extends Model
     {
         return $this->hasMany(Link::class);
     }
+
 }

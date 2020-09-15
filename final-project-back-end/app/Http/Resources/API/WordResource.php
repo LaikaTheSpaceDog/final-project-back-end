@@ -23,7 +23,7 @@ class WordResource extends JsonResource
             "word" => $this->word,
             "definition" => $this->definition,
             "liked" => (bool) $this->liked,
-            "links" => Link::wordLinks($this->links)
+            "links" => WordLinkResource::collection($this->links)
         ];
     }
 }

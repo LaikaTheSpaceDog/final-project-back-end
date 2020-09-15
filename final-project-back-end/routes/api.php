@@ -23,10 +23,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(["prefix" => "words"], function () {
     Route::get("", [Words::class, "index"]);
     Route::post("", [Words::class, "store"]);
-    Route::get("/liked", [Words::class, "like"]);
+    Route::get("/liked", [Words::class, "likedIndex"]);
     Route::group(["prefix" => "{word}"], function () {
         Route::get("", [Words::class, "show"]);
         Route::patch("", [Words::class, "update"]);
+        Route::put("", [Words::class, "update"]);
         Route::group(["prefix" => "liked"], function () {
             Route::get("", [Links::class, "index"]);
         });

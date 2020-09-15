@@ -9,6 +9,7 @@ use App\Http\Requests\API\WordRequest;
 use App\Http\Requests\API\WordUpdateRequest;
 use App\Http\Resources\API\WordResource;
 use App\Http\Resources\API\WordListResource;
+use App\Http\Resources\API\WordLikeResource;
 
 class Words extends Controller
 {
@@ -72,9 +73,10 @@ class Words extends Controller
         $word->delete();
     }
 
-    public function like()
+    public function likedIndex()
     {
         $words = Word::all();
-        return $liked = $words->filter(fn($obj) => $obj->liked === 1);
+        $liked = $words->filter(fn($obj) => $obj->liked === 1);
+        return WordLikeResource::collection($liked);
     }
 }

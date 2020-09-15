@@ -24,7 +24,10 @@ class WordUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            "liked" => ["required", "boolean"]
+            "word" => ["string", "max:100", "unique:words"],
+            "definition" => ["string", "max:1000"],
+            "liked" => ["boolean"],
+            "links" => ["array"]
         ];
     }
 }

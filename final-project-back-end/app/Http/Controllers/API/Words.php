@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Word;
 
 class Words extends Controller
 {
@@ -14,7 +15,7 @@ class Words extends Controller
      */
     public function index()
     {
-        //
+        return Word::all();
     }
 
     /**
@@ -25,7 +26,8 @@ class Words extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        return Word::create($data);
     }
 
     /**
@@ -34,9 +36,9 @@ class Words extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Word $word)
     {
-        //
+        return $word;
     }
 
     /**
@@ -46,9 +48,11 @@ class Words extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Word $word)
     {
-        //
+        $data = $request->all();
+        $word->fill($data)->save();
+        return $word;
     }
 
     /**
@@ -57,8 +61,14 @@ class Words extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Word $word)
     {
-        //
+        $word->delete();
+    }
+
+    public function like()
+    {
+        $words = Word::all();
+        return $liked = $words->filter(fn($obj) => $obj->liked === 1);
     }
 }

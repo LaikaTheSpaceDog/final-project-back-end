@@ -15,7 +15,6 @@ class CreateWordsTable extends Migration
     {
         Schema::create('words', function (Blueprint $table) {
             $table->id();
-            $table->string("word", 100);
             $table->string("definition", 1000);
             $table->boolean("liked")->default(false);
             $table->timestamps();

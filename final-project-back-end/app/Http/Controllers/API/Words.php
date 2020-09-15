@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Word;
 use App\Http\Requests\API\WordRequest;
 use App\Http\Requests\API\WordUpdateRequest;
+use App\Http\Resources\API\WordResource;
 
 class Words extends Controller
 {
@@ -29,7 +30,8 @@ class Words extends Controller
     public function store(WordRequest $request)
     {
         $data = $request->all();
-        return Word::create($data);
+        $word = Word::create($data);
+        return new WordResource($word);
     }
 
     /**
@@ -40,7 +42,7 @@ class Words extends Controller
      */
     public function show(Word $word)
     {
-        return $word;
+        return new WordResource($word);
     }
 
     /**
@@ -54,7 +56,7 @@ class Words extends Controller
     {
         $data = $request->all();
         $word->fill($data)->save();
-        return $word;
+        return new WordResource($word);
     }
 
     /**

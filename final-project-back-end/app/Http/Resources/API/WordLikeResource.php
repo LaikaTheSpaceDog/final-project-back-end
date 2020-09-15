@@ -18,7 +18,7 @@ class WordLikeResource extends JsonResource
             "id" => $this->id,
             "word" => $this->word,
             "definition" => $this->definition,
-            "liked" => $this->liked
+            "liked" => (bool) $this->liked
         ];
     }
 }

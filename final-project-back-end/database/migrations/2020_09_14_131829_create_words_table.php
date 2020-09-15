@@ -17,7 +17,7 @@ class CreateWordsTable extends Migration
             $table->id();
             $table->string("word", 100)->unique();
             $table->string("definition", 1000);
-            $table->boolean("liked")->default(0);
+            $table->boolean("liked")->default(false);
             $table->timestamps();
         });
     }

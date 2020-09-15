@@ -17,7 +17,7 @@ class WordListResource extends JsonResource
         return [
             "id" => $this->id,
             "word" => $this->word,
-            "liked" => $this->liked
+            "liked" => (bool) $this->liked
         ];
     }
 }

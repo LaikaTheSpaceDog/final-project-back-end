@@ -34,3 +34,5 @@ Route::group(["prefix" => "words"], function () {
         });
     });
 });
+
+Route::get('search', 'API\\Words@search');

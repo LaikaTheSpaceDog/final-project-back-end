@@ -85,10 +85,7 @@ class Words extends Controller
     public function search(Request $request)
     {
         $word = $request->get('query');
-        $word_info = Word::where('word', 'LIKE', '%' . $word . '%')->get()->sortBy('word');
-        return Response()->json([
-            'status' => 'success',
-            'data' => $word_info
-        ], 200);
+        $word_info = Word::where('word', 'LIKE', '%' . $word . '%')->get()->sortBy('word')->first();
+        return new WordResource($word_info);
     }
 }

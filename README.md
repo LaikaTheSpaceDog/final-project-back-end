@@ -1,61 +1,41 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Nerd Words Back End
+![Screen shot of Nerd Words homepage](nerd.png)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+This is the back end for a group project built that was built in 5 days during week 12 of the Develop Me Coding Fellowship. Nerd Words is a dictionary app aimed at beginners to coding, which included the ability for users to create a list of 'liked' words. I was responsible for setting up the database and API using Laravel whilst my two coursemates were responsible for building the front end using React and Redux (repo for their work available [here](https://github.com/AlexanderBraatz/final-project-front-end) and live site available [here](https://alexanderbraatz.github.io/final-project-front-end/#/)). I set the API up on a server using AWS, which is available at the following URL: https://nerdwords.developme.space/api/
 
-## About Laravel
+## Installation
+To get set up with the project on your local machine you will need [Vagrant](https://www.vagrantup.com/) downloaded on your machine. Once you've done this, follow these instructions:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1.  Run `git clone git@github.com:LaikaTheSpaceDog/final-project-back-end.git <desired sub-directory>`. The project files will be cloned to your local repo.
+2.  Go to your project directory and run `npm install`. This will install the dependencies in the local node_modules folder.
+3.  Go to the project folder: `cd final-project-back-end`.
+4.  Run `composer install` to download the required dependencies locally.
+5.  Run `vendor/bin/homestead make` to copy relevant Homestead files into project directory.
+6.  Change the second line of Homestead.yaml so it just uses 512mb: `memory: 512`
+7.  Run `cp .env.example .env` to create a .env file
+8.  In your newly created .env file, make the following changes:
+   ````
+   DB_DATABASE=homestead
+   DB_USERNAME=root
+   DB_PASSWORD=secret
+   ````
+9. Run `vagrant up` to get Vagrant up and running.
+10. Once Vagrant has finished loading, in your browser go to the below to view the UI:
+    1.  On Mac: http://homestead.test
+    2.  On Windows: http://localhost:8000
+11. Run `vagrant ssh` to SSH into the running Vagrant machine.
+12. Run `cd code` to enter the code directory.
+13. Run `artisan migrate` to run all migrations.
+14. _optional_: Run `artisan db:seed` to run the Owners seeder - this will populate the Words table with the words we used in our live site.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## API Routes
+Please see below for a list of the API routes that you can use once you have the project set up in your local environment.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. GET: http://homestead.test/api/words
+2. GET: http://homestead.test/api/words/{id}
+3. GET: http://homestead.test/api/words/{id}/links
+4. GET: http://homestead.test/api/words/liked
+5. POST: http://homestead.test/api/words
+6. POST: http://homestead.test/api/words/{id}/links
+7. PUT: http://homestead.test/api/words/{id}
+8. PATCH: http://homestead.test/api/words/{id}
